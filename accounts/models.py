@@ -31,23 +31,6 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-class MemberType(models.Model):
-    """
-    Member types owner or Tenant
-    """
-    name = models.CharField(max_length=50, verbose_name=_("name"))
-
-    class Meta:
-        verbose_name = _("Member type")
-        verbose_name_plural = _("Member types")
-
-    def __unicode__(self):
-        return self.name
-
-    def __str__(self):
-        return self.name
-
-
 class Member(models.Model):
     """
     Member info.
@@ -56,7 +39,7 @@ class Member(models.Model):
     phone_number = models.CharField(max_length=10, verbose_name=_("phone number"))
     status = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("created"))
-    type = models.ForeignKey(MemberType, verbose_name=_('type'), related_name='membertypes')
+    # type = models.ForeignKey(MemberType, verbose_name=_('type'), related_name='membertypes')
 
     class Meta:
         verbose_name = _("Member")

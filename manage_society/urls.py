@@ -22,5 +22,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name="base.html"), name='home'),
+    url(r'^search/$', TemplateView.as_view(template_name="base.html"), name='search-visitor'),
 ] + static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
               static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
