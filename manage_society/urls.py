@@ -18,10 +18,13 @@ from django.conf.urls import url, static
 from django.contrib import admin
 
 from django.views.generic import TemplateView
+from visitors.views import VisitorListView, CreateVisitorView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name="base.html"), name='home'),
-    url(r'^search/$', TemplateView.as_view(template_name="base.html"), name='search-visitor'),
+    url(r'^$', VisitorListView.as_view(template_name='visitor_list.html'), name='home'),
+    url(r'^search/$', VisitorListView.as_view(), name='search-visitor'),
+    url(r'^add/$', CreateVisitorView.as_view(), name='add-visitor'),
+    url(r'^about/$', TemplateView.as_view(template_name="about_us.html"), name='about'),
 ] + static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
               static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load staticfiles i18n static %}
+
+{% block content %}
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+      <div class="w3-display-middle">
+        <span class="w3-xxlarge w3-text-white w3-wide">VISITOR</span>
+      </div>
+    </div>
+
+    <!-- Container (Portfolio Section) -->
+
+<!-- Container (Contact Section) -->
+    <div class="w3-content w3-container w3-padding-64" id="visitor">
+        <h3 class="w3-center">ADD VISITOR</h3>
+        <p class="w3-center"><em>Jai Jinendra</em></p>
+
+        <div class="w3-row w3-padding-32 w3-section">
+
+            <div class="w3-col m4 w3-container">
+                <div class="w3-round-large w3-greyscale" style="width:100%;height:400px;">
+                    <img src="{% static 'images/sankul.jpg' %}" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+                </div>
+            </div>
+
+            <div class="w3-col m8 w3-panel">
+                <div class="w3-large w3-margin-bottom"></div>
+                <form action="{% url 'add-visitor'%}" method="POST">
+                    {% csrf_token %}
+                    <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                        <div class="w3-half">
+                            {{ form.flat_number }}
+                        </div>
+                        <div class="w3-half">
+                            {{ form.name }}
+                        </div>
+                    </div>
+                    <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                        <div class="w3-half">
+                            {{ form.phone_number }}
+                        </div>
+                        <div class="w3-half">
+                            {{ form.no_of_visitor }}
+                        </div>
+                    </div>
+                    {{ form.email }}
+                    <p>{{ form.address }}</p>
+                    <button class="w3-button w3-black w3-right w3-section" type="submit">
+                        ADD VISITOR
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

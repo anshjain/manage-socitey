@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load staticfiles i18n static %}
+
+{% block content %}
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+      <div class="w3-display-middle">
+        <span class="w3-xxlarge w3-text-white w3-wide">VISITOR</span>
+      </div>
+    </div>
+
+    <!-- Container (Portfolio Section) -->
+
+    <div class="w3-content w3-container w3-padding-64" id="visitor">
+      <h3 class="w3-center">SEARCH VISITOR</h3>
+      <p class="w3-center"><em>Jai Jinendra</em></p>
+
+      <div class="w3-row w3-padding-32 w3-section">
+        <div class="w3-col m4 w3-container">
+          <!-- Add Google Maps -->
+          <div id="googleMap" class="w3-round-large w3-greyscale" style="width:100%;height:400px;"></div>
+        </div>
+        <div class="w3-col m8 w3-panel">
+          <div class="w3-large w3-margin-bottom">
+            <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Pune, India<br>
+            <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +91 9552105933<br>
+            <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: jain.scs@gmail.com<br>
+          </div>
+
+          <form action="{% url 'search-visitor'%}" method="GET">
+              {% csrf_token %}
+            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            </div>
+            {{ form.phone_number }}
+
+            <button class="w3-button w3-black w3-right w3-section" type="submit">
+              <i class="fa fa-paper-plane"></i> SEARCH
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}
